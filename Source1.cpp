@@ -1,19 +1,17 @@
 #include <iostream>
-
 using namespace std;
 
 int main() {
-    double value = 0;
-
-
-    cout << "input value: ";        //Диалог: введите число
-
-    while (!(cin >> value)) {        //пока не будет введено нормальное число, выполняем цикл
-        cout << "error\n";          //сообщаем об ошибке ввода
-        cin.clear();                //сбрасываем коматозное состояние cin
-        fflush(stdin);              //очищаем поток ввода
+    double x, y;
+    for (;;) {
+        cout << "Enter two numbers\n";
+        while (!(std::cin >> x >> y)) {
+            std::cin.clear();
+            std::cin.get();
+            cout << "Error\n Repeat the enter two numders\n";
+        }
+        cout << "The sum of the numbers = " << x + y << '\n';
+        std::cin.clear();
+        std::cin.get();
     }
-
-    cout << "value = " << value << '\n';
-    cin.get();
 }
