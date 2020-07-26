@@ -1,19 +1,21 @@
 #include <iostream>
-
 using namespace std;
 
-int main() {
-    double value = 0;
 
-
-    cout << "input value: ";        //Диалог: введите число
-
-    while (!(cin >> value)) {        //пока не будет введено нормальное число, выполняем цикл
-        cout << "error\n";          //сообщаем об ошибке ввода
-        cin.clear();                //сбрасываем коматозное состояние cin
-        fflush(stdin);              //очищаем поток ввода
+int main(int argc, char** argv)
+{
+    setlocale(LC_ALL, "Russian");
+    string text, word;
+    cout << "Введите текст\n";
+    cin >> text;
+    cout << "Введите заменяемое слово\n";
+    cin >> word;
+    string::size_type pos = text.find(word);
+    while (pos != string::npos)
+    {
+        text.replace(pos, 4, "***");
+        pos = text.find(word);
     }
-
-    cout << "value = " << value << '\n';
-    cin.get();
+    cout << "\n" << text;
+    return 0;
 }
